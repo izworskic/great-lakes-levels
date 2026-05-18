@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Great Lakes Levels Data Sources by Chris Izworski</title>
+<meta name="description" content="Data sources for Great Lakes water levels: NOAA-GLERL, USACE Detroit District, Canadian Hydrographic Service, IJC, and supporting agencies.">
+<meta name="author" content="Chris Izworski">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://greatlakeslevels.org/data-sources/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Great Lakes Levels Data Sources by Chris Izworski">
+<meta property="og:description" content="Data sources for Great Lakes water levels: NOAA-GLERL, USACE Detroit District, Canadian Hydrographic Service, IJC, and supporting agencies.">
+<meta property="og:url" content="https://greatlakeslevels.org/data-sources/">
+<meta property="og:site_name" content="Great Lakes Levels by Chris Izworski">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Great Lakes Levels Data Sources by Chris Izworski">
+<meta name="twitter:description" content="Data sources for Great Lakes water levels: NOAA-GLERL, USACE Detroit District, Canadian Hydrographic Service, IJC, and supporting agencies.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://greatlakeslevels.org/data-sources/",
+      "url": "https://greatlakeslevels.org/data-sources/",
+      "name": "Great Lakes Levels Data Sources by Chris Izworski",
+      "description": "Data sources for Great Lakes water levels: NOAA-GLERL, USACE Detroit District, Canadian Hydrographic Service, IJC, and supporting agencies.",
+      "isPartOf": {
+        "@id": "https://greatlakeslevels.org/#website"
+      },
+      "author": {
+        "@id": "https://chrisizworski.com/#person"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://greatlakeslevels.org/#website",
+      "url": "https://greatlakeslevels.org/",
+      "name": "Great Lakes Levels by Chris Izworski",
+      "publisher": {
+        "@id": "https://chrisizworski.com/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://chrisizworski.com/#person",
+      "name": "Chris Izworski",
+      "url": "https://chrisizworski.com/chris-izworski/",
+      "image": "https://chrisizworski.com/og-image.png",
+      "sameAs": [
+        "https://www.wikidata.org/wiki/Q138283432",
+        "https://chrisizworski.com",
+        "https://chrisizworski.com/chris-izworski/",
+        "https://michigantroutreport.com",
+        "https://michiganbirdingreport.com",
+        "https://freighterviewfarms.com",
+        "https://gazette.chrisizworski.com",
+        "https://github.com/izworskic",
+        "https://orcid.org/0009-0002-7268-6083"
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+:root {
+  --bg: #f8f7f3;
+  --ink: #1a2a3a;
+  --accent: #1a4a6a;
+  --rule: #c9c2b0;
+  --muted: #5a6470;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.65;
+  margin: 0;
+  padding: 0;
+  -webkit-text-size-adjust: 100%;
+}
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+}
+header.site {
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 20px;
+  margin-bottom: 32px;
+}
+header.site a.brand {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.05em;
+}
+header.site nav {
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: var(--muted);
+}
+header.site nav a {
+  color: var(--accent);
+  text-decoration: none;
+  margin-right: 14px;
+}
+header.site nav a:hover { text-decoration: underline; }
+h1 {
+  font-size: clamp(28px, 5vw, 38px);
+  line-height: 1.2;
+  margin: 0 0 8px 0;
+  color: var(--ink);
+}
+.byline {
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 28px;
+  font-size: 0.95em;
+}
+h2 {
+  font-size: clamp(20px, 3.5vw, 26px);
+  margin: 36px 0 12px 0;
+  color: var(--ink);
+}
+p { margin: 0 0 16px 0; }
+a { color: var(--accent); }
+.lake-stats {
+  background: #efece4;
+  border-left: 4px solid var(--accent);
+  padding: 16px 20px;
+  margin: 24px 0;
+  font-size: 0.95em;
+}
+.lake-stats strong { color: var(--ink); }
+.related {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-size: 0.95em;
+}
+.related h3 { font-size: 1em; margin: 0 0 10px 0; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.related a { display: inline-block; margin-right: 16px; margin-bottom: 8px; }
+footer.site {
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-size: 0.85em;
+  color: var(--muted);
+}
+footer.site a { color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="container">
+<header class="site">
+  <a class="brand" href="https://greatlakeslevels.org/">Great Lakes Levels</a>
+  <nav>
+    <a href="https://greatlakeslevels.org/">Live Dashboard</a>
+    <a href="https://greatlakeslevels.org/lake-superior/">Superior</a>
+    <a href="https://greatlakeslevels.org/lake-michigan/">Michigan</a>
+    <a href="https://greatlakeslevels.org/lake-huron/">Huron</a>
+    <a href="https://greatlakeslevels.org/lake-erie/">Erie</a>
+    <a href="https://greatlakeslevels.org/lake-ontario/">Ontario</a>
+    <a href="https://greatlakeslevels.org/saginaw-bay/">Saginaw Bay</a>
+    <a href="https://greatlakeslevels.org/chris-izworski/">About</a>
+  </nav>
+</header>
+<h1>Great Lakes Levels Data Sources</h1>
+<div class="byline">By <a href="/chris-izworski/">Chris Izworski</a>, Bay City, Michigan</div>
+<p>Great Lakes Levels relies on official data from a small number of federal and binational agencies, and Chris Izworski documents the data sources here to provide full transparency about where the underlying data comes from. The data ecosystem for Great Lakes water levels is one of the longest-running hydrometeorological observation systems in North America, with reliable lake-wide records back to 1918 and individual gauge records extending considerably further. The system operates as a binational partnership coordinated through the International Joint Commission, with U.S. and Canadian federal agencies jointly responsible for data collection, quality control, and publication.</p>
+
+<div class="lake-stats">
+<p><strong>Primary U.S. agencies:</strong> NOAA Great Lakes Environmental Research Laboratory (GLERL), NOAA Center for Operational Oceanographic Products and Services (CO-OPS), U.S. Army Corps of Engineers Detroit District (USACE-LRE), U.S. Geological Survey (USGS).<br>
+<strong>Primary Canadian agencies:</strong> Environment and Climate Change Canada (ECCC), Canadian Hydrographic Service (CHS), Fisheries and Oceans Canada (DFO).<br>
+<strong>Binational coordination:</strong> International Joint Commission (IJC), Coordinating Committee on Great Lakes Basic Hydraulic and Hydrologic Data.<br>
+<strong>Supporting science agencies:</strong> NOAA National Weather Service, Great Lakes Integrated Sciences and Assessments (GLISA, University of Michigan), Great Lakes Sea Grant Network.<br>
+<strong>Datum:</strong> International Great Lakes Datum 1985 (IGLD85), the standard reference plane.</p>
+</div>
+
+<h2>The primary data sources</h2>
+
+<p><strong>NOAA Great Lakes Environmental Research Laboratory (GLERL)</strong> at glerl.noaa.gov operates the Great Lakes Water Level Dashboard, the canonical public reference for current and historical lake levels. GLERL also operates the Great Lakes Operational Forecast System (GLOFS) for short-term water-level, current, and water-temperature forecasts, and maintains the long-term research datasets that underpin most academic work on Great Lakes water levels.</p>
+
+<p><strong>NOAA Center for Operational Oceanographic Products and Services (CO-OPS)</strong> at tidesandcurrents.noaa.gov operates the network of real-time water-level gauges across the U.S. Great Lakes shoreline. CO-OPS data is the source for the local-gauge real-time signals that property owners use for short-term planning. The network includes more than three dozen active stations across the U.S. side of the basin.</p>
+
+<p><strong>U.S. Army Corps of Engineers Detroit District (USACE-LRE)</strong> at water.usace.army.mil publishes the Weekly Great Lakes Water Level Update, the operational forecast of record for the U.S. side, plus the Monthly Bulletin of Lake Levels for the Great Lakes. USACE-LRE also operates the Great Lakes Hydraulics and Hydrology branch, which produces the multi-month outlooks that property owners use for seasonal planning. The Detroit District covers Lakes Superior, Michigan, Huron, and St. Clair plus the connecting channels. The Buffalo District covers Lakes Erie and Ontario.</p>
+
+<p><strong>Environment and Climate Change Canada (ECCC)</strong> at canada.ca operates the Canadian side of the binational water-level monitoring program, with the Canadian Hydrographic Service (CHS) responsible for water-level gauge operations and data publication. CHS publishes the Monthly Water Level Bulletin for the Great Lakes and Montreal Harbour jointly with USACE-LRE under the auspices of the Coordinating Committee.</p>
+
+<p><strong>International Joint Commission (IJC)</strong> at ijc.org coordinates the binational governance of the Great Lakes water-level system, including the Lake Superior Regulation Plan (governing Lake Superior outflow at the Soo) and the Lake Ontario Regulation Plan 2014 (governing Lake Ontario outflow at the Moses-Saunders Power Dam). The IJC framework is the policy mechanism through which the basinwide water-level system is actively managed.</p>
+
+<h2>Supporting data sources</h2>
+
+<p><strong>The NOAA Great Lakes Coast Watch</strong> at coastwatch.glerl.noaa.gov publishes the daily ice-cover analysis through the winter season, plus surface water temperature, harmful algal bloom information, and other ice-and-water-quality products. Coast Watch is the operational source for the ice-cover signal that property owners along the upper Great Lakes and the western Lake Erie basin track through winter and spring.</p>
+
+<p><strong>The National Weather Service Marine Forecast</strong> at weather.gov publishes the marine wind, wave, and weather forecasts that property owners use for short-term wind-setup and seiche prediction. The NWS marine forecasts are issued for each lake separately and updated multiple times per day.</p>
+
+<p><strong>The Great Lakes Integrated Sciences and Assessments (GLISA)</strong> at glisa.umich.edu publishes the academic research summaries on Great Lakes climate, water levels, and ice cover that property owners and policymakers use for longer-term context. GLISA is hosted at the University of Michigan and produces some of the most accessible summaries of the scientific consensus on Great Lakes climate change.</p>
+
+<p><strong>The Great Lakes Sea Grant Network</strong> at greatlakesseagrant.com coordinates the regional outreach and education work across the eight Great Lakes states. Each state has its own Sea Grant program (Michigan Sea Grant, Wisconsin Sea Grant, Illinois-Indiana Sea Grant, Ohio Sea Grant, Pennsylvania Sea Grant, New York Sea Grant, Minnesota Sea Grant), and the network's collective outreach products are useful supporting reference for property owners.</p>
+
+<h2>How the data flows</h2>
+
+<p>The water-level signal originates at the individual gauges, which measure water surface elevation at one-minute or six-minute intervals depending on the station. The gauge data is quality-controlled and aggregated to hourly, daily, and monthly summaries. The monthly summaries are then aggregated to lake-wide averages by the Coordinating Committee on Great Lakes Basic Hydraulic and Hydrologic Data, which determines which stations contribute to each lake's lake-wide value and how the averaging is performed.</p>
+
+<p>The lake-wide monthly average is what most property owners think of as "the lake level" for planning purposes. This is the value reported by NOAA-GLERL and USACE, and it is the basis for the OHWM and the historical-record references throughout this site. The lake-wide monthly value is published in the USACE Monthly Bulletin and the CHS Monthly Water Level Bulletin (which are coordinated and contain identical lake-wide data for the shared lakes).</p>
+
+<p>For real-time signals, the individual gauge data is the relevant reference rather than the lake-wide average. Real-time data is available through the CO-OPS website for U.S. stations and through Canada's Real-Time Hydrometric Data portal for Canadian stations.</p>
+
+<h2>How this site uses the data</h2>
+
+<p>Great Lakes Levels integrates the official water-level data into a property-owner-focused interpretation layer. The site does not produce original water-level measurements or forecasts. The interactive dashboard on the <a href="/">homepage</a> displays the official data from the sources listed above, with attribution. The reference pages cite the historical record values, OHWM elevations, and other data points that are produced by the official sources. Where this site adds interpretation or property-owner framing, the interpretation is the editorial product of Chris Izworski. The underlying data remains the product of the federal and binational agencies that operate the monitoring system.</p>
+
+<h2>How to use this page</h2>
+
+<p>If you need the underlying data for specific decisions, go directly to the official sources cited above. The NOAA-GLERL Great Lakes Water Level Dashboard is the best single starting point for U.S.-side data. The CHS Monthly Water Level Bulletin is the equivalent for Canadian-side data. The USACE Weekly Great Lakes Water Level Update is the operational forecast for the next six months.</p>
+
+<p>For the property-owner interpretation layer that this site provides, see the <a href="/property-owner-guide/">Property Owner Guide</a>, the <a href="/seiche/">Seiche</a> reference, the <a href="/ohwm/">Ordinary High Water Mark</a> reference, the <a href="/record-water-levels/">Record Water Levels</a> reference, and the lake-specific and sub-region-specific pages.</p>
+<footer class="site">
+  <p>Built and maintained by <a href="https://greatlakeslevels.org/chris-izworski/">Chris Izworski</a> in Bay City, Michigan, on Saginaw Bay. Data sources: NOAA Great Lakes Environmental Research Laboratory (GLERL), U.S. Army Corps of Engineers Detroit District, Environment and Climate Change Canada.</p>
+  <p>Companion sites: <a href="https://chrisizworski.com">chrisizworski.com</a>, <a href="https://chrisizworski.com/great-lakes-buoys/">Great Lakes Buoy Dashboard</a>, <a href="https://michigantroutreport.com">Michigan Trout Report</a>, <a href="https://michiganbirdingreport.com">Michigan Birding Report</a>, <a href="https://freighterviewfarms.com">Freighter View Farms</a>.</p>
+  <p>The information here is provided for general reference. For property, regulatory, or insurance decisions, consult licensed professionals and the official agency sources cited above.</p>
+</footer>
+</div>
+</body>
+</html>
