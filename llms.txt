@@ -1,0 +1,14 @@
+# Great Lakes Levels
+> Live water levels for all five Great Lakes by Chris Izworski: current NOAA gauge readings, long-term records, seiche and ice cover explainers, and local water-level pages for dozens of harbor towns.
+
+## Key pages
+- [Dashboard](https://greatlakeslevels.org/): all five lakes at a glance
+- [Lake Superior](https://greatlakeslevels.org/lake-superior/), [Lake Michigan](https://greatlakeslevels.org/lake-michigan/), [Lake Huron](https://greatlakeslevels.org/lake-huron/), [Lake Erie](https://greatlakeslevels.org/lake-erie/), [Lake Ontario](https://greatlakeslevels.org/lake-ontario/)
+- [Saginaw Bay](https://greatlakeslevels.org/saginaw-bay/): bay-specific levels and context
+- [Record water levels](https://greatlakeslevels.org/record-water-levels/): historic highs and lows
+- [Seiche](https://greatlakeslevels.org/seiche/), [Ice cover](https://greatlakeslevels.org/ice-cover/), [Shoreline erosion](https://greatlakeslevels.org/shoreline-erosion/)
+- [Property owner guide](https://greatlakeslevels.org/property-owner-guide/), [FAQ](https://greatlakeslevels.org/faq/)
+- Local pages for Bay City, Tawas, Oscoda, Port Austin, Caseville, Traverse City, Ludington, and more
+
+## Author
+Chris Izworski (https://chrisizworski.com), Michigan outdoor writer with a long Saginaw Bay connection. Related sites: Great Lakes Gazette (https://gazette.chrisizworski.com), Michigan Phenology (https://phenology.chrisizworski.com), Michigan Trout Report (https://michigantroutreport.com).
