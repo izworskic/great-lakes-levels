@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Read Great Lakes Water Levels | Chris Izworski</title>
+<meta name="description" content="A practical guide to Great Lakes water-level data: lake-wide levels, local NOAA gauges, IGLD85, USACE forecasts, wind setup and seiche. By Chris Izworski.">
+<meta name="author" content="Chris Izworski">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://greatlakeslevels.org/how-to-read-great-lakes-water-levels">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Read Great Lakes Water Levels | Chris Izworski">
+<meta property="og:description" content="Which Great Lakes water-level number should you use? A practical field guide to gauges, lake-wide means, forecasts, datum and short-term wind effects.">
+<meta property="og:url" content="https://greatlakeslevels.org/how-to-read-great-lakes-water-levels">
+<meta property="og:site_name" content="Great Lakes Levels">
+<meta property="og:image" content="https://greatlakeslevels.org/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Read Great Lakes Water Levels | Chris Izworski">
+<meta name="twitter:description" content="A practical field guide to Great Lakes gauges, lake-wide means, forecasts, IGLD85 and short-term wind effects.">
+<meta name="twitter:image" content="https://greatlakeslevels.org/og-card.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://greatlakeslevels.org/how-to-read-great-lakes-water-levels#article",
+      "headline": "How to Read Great Lakes Water Levels",
+      "description": "A practical guide to choosing and interpreting Great Lakes water-level data from NOAA and the U.S. Army Corps of Engineers.",
+      "datePublished": "2026-08-24",
+      "dateModified": "2026-08-24",
+      "mainEntityOfPage": "https://greatlakeslevels.org/how-to-read-great-lakes-water-levels",
+      "author": {"@id": "https://chrisizworski.com/#person"},
+      "publisher": {"@id": "https://greatlakeslevels.org/#website"},
+      "about": [
+        {"@type":"Thing","name":"Great Lakes water levels"},
+        {"@type":"Thing","name":"International Great Lakes Datum 1985"},
+        {"@type":"Organization","name":"NOAA"},
+        {"@type":"Organization","name":"U.S. Army Corps of Engineers"}
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://greatlakeslevels.org/#website",
+      "url": "https://greatlakeslevels.org/",
+      "name": "Great Lakes Levels",
+      "publisher": {"@id": "https://chrisizworski.com/#person"}
+    },
+    {
+      "@type": "Person",
+      "@id": "https://chrisizworski.com/#person",
+      "name": "Chris Izworski",
+      "url": "https://chrisizworski.com/chris-izworski/",
+      "sameAs": [
+        "https://www.linkedin.com/in/chris-izworski-15294510",
+        "https://github.com/izworskic",
+        "https://orcid.org/0009-0002-7268-6083",
+        "https://about.me/chrisizworski",
+        "https://medium.com/@izworski",
+        "https://www.youtube.com/@izworskic",
+        "https://www.wikidata.org/wiki/Q138283432",
+        "https://freighterviewfarms.com/",
+        "https://michigantroutreport.com/",
+        "https://michiganbirdingreport.com/"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the best Great Lakes water-level number to use?",
+          "acceptedAnswer": {"@type":"Answer","text":"Use a lake-wide daily or monthly value for basin-scale trend, a nearby NOAA gauge for local current conditions, and a USACE forecast for the weeks or months ahead. Local wind setup and seiche can temporarily move shoreline water well above or below the lake-wide value."}
+        },
+        {
+          "@type": "Question",
+          "name": "What does IGLD 1985 mean?",
+          "acceptedAnswer": {"@type":"Answer","text":"International Great Lakes Datum 1985 is the vertical reference system used for Great Lakes water-level elevations. A water-level number is meaningful only when its datum is known."}
+        },
+        {
+          "@type": "Question",
+          "name": "Are Great Lakes water levels the same everywhere on a lake?",
+          "acceptedAnswer": {"@type":"Answer","text":"No. Lake-wide values describe the broad lake surface, while local gauges can differ because of wind setup, atmospheric pressure, seiche, river effects and local hydraulics."}
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{--bg:#f8f7f3;--ink:#1a2a3a;--accent:#1a4a6a;--rule:#c9c2b0;--muted:#5a6470;--panel:#efece4}
+*{box-sizing:border-box}
+body{font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif;background:var(--bg);color:var(--ink);line-height:1.68;margin:0;-webkit-text-size-adjust:100%}
+.container{max-width:790px;margin:0 auto;padding:32px 24px 80px}
+header.site{border-bottom:1px solid var(--rule);padding-bottom:20px;margin-bottom:34px}
+header.site a.brand{color:var(--ink);text-decoration:none;font-weight:700;font-size:1.05em}
+header.site nav{margin-top:10px;font-size:.9em;color:var(--muted)}
+header.site nav a{color:var(--accent);text-decoration:none;margin-right:14px}
+header.site nav a:hover{text-decoration:underline}
+h1{font-size:clamp(30px,5vw,42px);line-height:1.15;margin:0 0 10px}
+.byline{color:var(--muted);font-style:italic;margin-bottom:28px;font-size:.95em}
+.dek{font-size:1.12em;line-height:1.55;margin-bottom:28px}
+h2{font-size:clamp(21px,3.5vw,27px);margin:40px 0 12px}
+h3{font-size:1.08em;margin:24px 0 8px}
+p{margin:0 0 17px}
+a{color:var(--accent)}
+.callout{background:var(--panel);border-left:4px solid var(--accent);padding:18px 20px;margin:24px 0}
+.callout p:last-child{margin-bottom:0}
+table{width:100%;border-collapse:collapse;margin:22px 0 30px;font-size:.94em}
+th,td{text-align:left;vertical-align:top;padding:11px 10px;border-bottom:1px solid var(--rule)}
+th{background:var(--panel)}
+ul{padding-left:22px;margin:0 0 20px}
+li{margin-bottom:8px}
+.source-list li{margin-bottom:12px}
+.author-box{margin-top:48px;padding:22px;background:var(--panel);border:1px solid var(--rule)}
+.author-box h2{margin-top:0}
+footer.site{margin-top:60px;padding-top:24px;border-top:1px solid var(--rule);font-size:.85em;color:var(--muted)}
+footer.site a{color:var(--muted)}
+@media(max-width:620px){.container{padding:24px 18px 60px}table{font-size:.88em}th,td{padding:9px 7px}}
+</style>
+</head>
+<body>
+<div class="container">
+<header class="site">
+  <a class="brand" href="/">Great Lakes Levels</a>
+  <nav>
+    <a href="/">Live Dashboard</a>
+    <a href="/data-sources/">Data Sources</a>
+    <a href="/property-owner-guide/">Property Owner Guide</a>
+    <a href="/seiche/">Seiche</a>
+    <a href="/chris-izworski">About</a>
+  </nav>
+</header>
+
+<main>
+<h1>How to Read Great Lakes Water Levels</h1>
+<div class="byline">By <a href="/chris-izworski">Chris Izworski</a> · Great Lakes Levels · August 24, 2026</div>
+<p class="dek">There is no single water-level number that answers every Great Lakes question. A lake-wide mean, a nearby NOAA gauge, a six-month forecast, and the water actually touching a seawall can all be different at the same moment. The useful question is not simply “what is the lake level?” It is “which water-level signal fits the decision I am making?”</p>
+
+<div class="callout">
+<p><strong>Fast rule:</strong> use <strong>lake-wide values for trend</strong>, a <strong>nearby gauge for local conditions</strong>, a <strong>USACE forecast for the future</strong>, and <strong>wind/seiche information for short-lived shoreline swings</strong>.</p>
+</div>
+
+<h2>The four water-level signals I look at</h2>
+
+<h3>1. Lake-wide daily and monthly levels: the broad trend</h3>
+<p>The U.S. Army Corps of Engineers Detroit District publishes daily Great Lakes water levels and monthly mean levels for Lakes Superior, Michigan-Huron, St. Clair, Erie and Ontario. USACE notes that the daily values are produced in cooperation with NOAA and the Canadian Hydrographic Service and are referenced to International Great Lakes Datum 1985, or IGLD 1985.</p>
+<p>This is the right scale when the question is broad: Is Lake Huron running above or below its long-term average? Has Lake Superior risen seasonally? Is Lake Erie entering autumn higher or lower than last year? A lake-wide value is deliberately smoother than what one shoreline gauge may be seeing at a specific hour.</p>
+
+<h3>2. A nearby NOAA gauge: what is happening locally now</h3>
+<p>NOAA's Center for Operational Oceanographic Products and Services operates Great Lakes water-level stations and publishes real-time observations. NOAA says most water-level stations provide readings every six minutes. These gauges are the better reference for a marina, harbor, river mouth, seawall, dock or shoreline reach when you care about the water near that location right now.</p>
+<p>A gauge is still a point measurement. It is not a perfect substitute for the water at a property several miles away, but it is usually more useful for short-term local decisions than a lake-wide monthly average.</p>
+
+<h3>3. USACE one-month and six-month forecasts: where the basin may be headed</h3>
+<p>USACE publishes a one-month Great Lakes forecast updated weekly and a six-month coordinated forecast updated monthly. The six-month product combines recent recorded monthly means with a projected path and a range of possible levels. USACE explains that the range reflects weather variability rather than a promise that the lake will follow a single exact line.</p>
+<p>For shoreline planning, this distinction matters. The center forecast is a useful trajectory; the forecast range is the more honest description of uncertainty.</p>
+
+<h3>4. Wind setup and seiche: why your shoreline can disagree with the lake-wide number</h3>
+<p>Short-term local water levels can move substantially because wind pushes water toward one side of a lake or bay, atmospheric pressure changes the surface response, and the basin can oscillate after forcing changes. On the Great Lakes, these effects are often more relevant to a shoreline owner than astronomical tide. NOAA notes that Great Lakes astronomical tides are small, while precipitation, evaporation and runoff dominate the broader water balance.</p>
+<p>That is why a calm-weather lake-wide value should not be treated as the maximum water elevation a seawall, dock or beach may experience during a strong wind event.</p>
+
+<h2>Which number should you use?</h2>
+<table>
+<thead><tr><th>Question</th><th>Best first signal</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Is the lake generally high or low this year?</td><td>USACE lake-wide daily/monthly level</td><td>It describes the basin-scale state and supports historical comparison.</td></tr>
+<tr><td>How much water is at my harbor or shoreline today?</td><td>Nearest NOAA water-level gauge</td><td>It captures local short-term movement that a lake-wide mean smooths out.</td></tr>
+<tr><td>Where might levels be in a month?</td><td>USACE one-month forecast</td><td>It is the short-horizon operational forecast and is updated weekly.</td></tr>
+<tr><td>What is the seasonal risk over the next several months?</td><td>USACE six-month coordinated forecast</td><td>It gives a projected path plus a weather-dependent range.</td></tr>
+<tr><td>Could water jump at my shoreline during a strong wind?</td><td>Local gauge + marine wind forecast + seiche context</td><td>Wind setup can create large short-lived local departures from the lake-wide value.</td></tr>
+<tr><td>Can I compare two elevations from different sources?</td><td>Check the datum first</td><td>Elevations are not safely comparable unless they use the same vertical reference.</td></tr>
+</tbody>
+</table>
+
+<h2>IGLD 1985: the datum matters more than most people realize</h2>
+<p>A water-level elevation needs a reference plane. For the Great Lakes, federal water-level products commonly use <strong>International Great Lakes Datum 1985 (IGLD 1985)</strong>. NOAA describes a datum as the base elevation from which heights or depths are reckoned, and USACE reports its current Great Lakes daily water-level product in IGLD 1985.</p>
+<p>If one document gives an elevation relative to IGLD 1985 and another uses a local benchmark, chart datum or another vertical datum, the numbers may look comparable while representing different reference systems. Before making an engineering, property-boundary or regulatory comparison, verify the datum and use the authoritative agency or a qualified professional for the application.</p>
+
+<h2>Lake Michigan and Lake Huron are reported together</h2>
+<p>One detail that often surprises people is that USACE reports Michigan-Huron as one lake-wide water-level system. The two lakes are hydraulically connected through the Straits of Mackinac and are treated as a single lake for the coordinated lake-wide level. Local gauges around Lake Michigan, Lake Huron and the Straits can still differ in the short term because of wind, pressure and local hydraulics.</p>
+
+<h2>A practical example: Saginaw Bay</h2>
+<p>Suppose the question is whether a Saginaw Bay shoreline property is likely to have high water against a seawall tomorrow afternoon. I would not stop at the Lake Michigan-Huron monthly mean. I would start with the broad Michigan-Huron level for context, then check the nearest useful NOAA gauge, the local wind forecast and the possibility of wind setup or a seiche within the bay. If the question instead is whether the property may face a higher-water season over the next few months, the six-month USACE forecast becomes much more important.</p>
+<p>The scale of the decision determines the scale of the data.</p>
+
+<h2>Source hierarchy</h2>
+<p>Great Lakes Levels is an interpretation layer, not an original water-level observing network. For underlying measurements and forecasts, I use primary public agencies first:</p>
+<ul class="source-list">
+<li><strong>U.S. Army Corps of Engineers Detroit District — Great Lakes Water Levels:</strong> daily lake-wide values, monthly means and historical context. <a href="https://water.usace.army.mil/office/lre/waterleveldata/waterLevelData" rel="noopener noreferrer">Official water-level data</a>.</li>
+<li><strong>U.S. Army Corps of Engineers — Six-Month Coordinated Forecast:</strong> recorded monthly means, forecast trajectory and weather-dependent range. <a href="https://water.usace.army.mil/office/lre/forecast/mboglwl" rel="noopener noreferrer">Official six-month forecast</a>.</li>
+<li><strong>U.S. Army Corps of Engineers — Forecast Products:</strong> includes the weekly one-month forecast and monthly six-month forecast. <a href="https://water.usace.army.mil/office/lre/forecast/allForecast" rel="noopener noreferrer">Official forecast products</a>.</li>
+<li><strong>NOAA Tides &amp; Currents:</strong> real-time Great Lakes gauges, datums and station metadata. <a href="https://tidesandcurrents.noaa.gov/stations.html?sort=1&amp;type=Water+Levels" rel="noopener noreferrer">NOAA water-level stations</a>.</li>
+<li><strong>NOAA water-level reference:</strong> explains Great Lakes water levels, NWLON and vertical datums. <a href="https://tidesandcurrents.noaa.gov/water_level_info.html" rel="noopener noreferrer">NOAA water-level information</a>.</li>
+</ul>
+
+<h2>What this guide does not do</h2>
+<p>This guide is for interpretation and planning. It is not a substitute for surveyed elevations, engineering design, navigation requirements, legal boundary determinations or regulatory advice. USACE also cautions that its public Great Lakes water-level data are preliminary and subject to change. For consequential decisions, use the originating agency data and the professional standard appropriate to the decision.</p>
+
+<div class="author-box">
+<h2>About the author</h2>
+<p><strong>Chris Izworski</strong> created Great Lakes Levels to make federal and binational water-level information easier to use for shoreline owners and Great Lakes observers. He is based in Michigan and publishes additional Great Lakes and Michigan field tools at <a href="https://chrisizworski.com/">chrisizworski.com</a>. See the site's <a href="/data-sources/">data-source documentation</a> and <a href="/chris-izworski">author page</a> for more context.</p>
+</div>
+</main>
+
+<footer class="site">
+<p>Great Lakes Levels is built and maintained by <a href="/chris-izworski">Chris Izworski</a>. Underlying water-level observations and forecasts remain the work of the cited public agencies.</p>
+<p><a href="/">Live Dashboard</a> · <a href="/data-sources/">Data Sources</a> · <a href="/property-owner-guide/">Property Owner Guide</a> · <a href="https://chrisizworski.com/">ChrisIzworski.com</a></p>
+</footer>
+</div>
+</body>
+</html>
