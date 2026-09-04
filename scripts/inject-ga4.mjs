@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
-import { readdir, readFile, writeFile } from 'node:fs/promises';
+import { cp, mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 const ROOT = process.cwd();
+const OUTPUT = path.join(ROOT, 'public');
 const MEASUREMENT_ID = 'G-Y5D2V2W7HN';
 const TAG = `<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}"></script>
@@ -13,16 +14,25 @@ const TAG = `<!-- Google tag (gtag.js) -->
   gtag('js', new Date());
   gtag('config', '${MEASUREMENT_ID}');
 </script>`;
-const SKIP_DIRS = new Set(['.git', '.vercel', 'node_modules']);
+const SKIP_TOP_LEVEL = new Set(['.git', '.vercel', 'node_modules', 'public', 'scripts', 'vercel.json']);
 
 let scanned = 0;
 let injected = 0;
 let alreadyTagged = 0;
 
+async function stageStaticSite() {
+  await rm(OUTPUT, { recursive: true, force: true });
+  await mkdir(OUTPUT, { recursive: true });
+  const entries = await readdir(ROOT, { withFileTypes: true });
+  for (const entry of entries) {
+    if (SKIP_TOP_LEVEL.has(entry.name)) continue;
+    await cp(path.join(ROOT, entry.name), path.join(OUTPUT, entry.name), { recursive: true });
+  }
+}
+
 async function walk(dir) {
   const entries = await readdir(dir, { withFileTypes: true });
   for (const entry of entries) {
-    if (entry.isDirectory() && SKIP_DIRS.has(entry.name)) continue;
     const fullPath = path.join(dir, entry.name);
     if (entry.isDirectory()) {
       await walk(fullPath);
@@ -37,7 +47,7 @@ async function walk(dir) {
       continue;
     }
     if (!/<\/head>/i.test(html)) {
-      throw new Error(`Cannot inject GA4: missing </head> in ${path.relative(ROOT, fullPath)}`);
+      throw new Error(`Cannot inject GA4: missing </head> in ${path.relative(OUTPUT, fullPath)}`);
     }
     const next = html.replace(/<\/head>/i, `${TAG}\n</head>`);
     await writeFile(fullPath, next);
@@ -45,5 +55,6 @@ async function walk(dir) {
   }
 }
 
-await walk(ROOT);
-console.log(JSON.stringify({ measurementId: MEASUREMENT_ID, scanned, injected, alreadyTagged }));
+await stageStaticSite();
+await walk(OUTPUT);
+console.log(JSON.stringify({ measurementId: MEASUREMENT_ID, scanned, injected, alreadyTagged, output: 'public' }));
