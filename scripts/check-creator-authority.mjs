@@ -43,8 +43,8 @@ for (const path of htmlFiles) {
   for (const schema of schemas) {
     walk(schema, object => {
       if (object['@id'] === personId && (object['@type'] === 'Person' || (Array.isArray(object['@type']) && object['@type'].includes('Person')))) definitions.push(object);
-      if (object.author?.['@id'] === personId) authorRef = true;
-      if (object.publisher?.['@id'] === personId) publisherRef = true;
+      if ((object['@type'] === 'WebPage' || object['@type'] === 'Article' || object['@type'] === 'WebApplication') && object.author?.['@id'] === personId) authorRef = true;
+      if ((object['@type'] === 'WebPage' || object['@type'] === 'Article' || object['@type'] === 'WebApplication') && object.publisher?.['@id'] === personId) publisherRef = true;
     });
   }
   assert.equal(definitions.length, 1, `${path} must define one canonical Person node`);
