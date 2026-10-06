@@ -39,6 +39,10 @@ for (const path of htmlFiles) {
   const body = html.split(/<\/head>/i)[1] ?? '';
   assert.match(body, /<a\b[^>]*href="https:\/\/chrisizworski\.com\/chris-izworski\/"[^>]*>[^<]*Chris Izworski<\/a>/i, `${path} must visibly credit the canonical profile in a body link`);
 
+  if (path !== 'chris-izworski/index.html') {
+    assert.match(body, /<a\\b[^>]*href="\\/chris-izworski\\/?"/i, `${path} must retain a useful link to its local author biography`);
+  }
+
   const blocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
   const schemas = blocks.map(([, contents]) => JSON.parse(contents));
   const definitions = [];
