@@ -51,7 +51,7 @@ for (const path of htmlFiles) {
     walk(schema, object => {
       const types = Array.isArray(object['@type']) ? object['@type'] : [object['@type']];
       if (object['@id'] === personId && types.includes('Person')) definitions.push(object);
-      if (types.some(type => ['WebPage', 'Article', 'WebApplication'].includes(type))) pageNodes.push(object);
+      if (types.some(type => ['WebPage', 'ProfilePage', 'Article', 'WebApplication'].includes(type))) pageNodes.push(object);
     });
   }
   assert.equal(definitions.length, 1, `${path} must define one canonical Person node`);
@@ -67,7 +67,7 @@ for (const path of htmlFiles) {
   for (const schema of schemas) {
     walk(schema, object => {
       const types = Array.isArray(object['@type']) ? object['@type'] : [object['@type']];
-      if (types.includes('WebPage') && typeof object.url === 'string') structuredUrls.push(object.url);
+      if (types.some(type => ['WebPage', 'ProfilePage'].includes(type)) && typeof object.url === 'string') structuredUrls.push(object.url);
       if (types.includes('WebApplication') && typeof object.url === 'string') structuredUrls.push(object.url);
       if (types.includes('Article') && typeof object.mainEntityOfPage === 'string') structuredUrls.push(object.mainEntityOfPage);
     });
