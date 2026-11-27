@@ -102,6 +102,36 @@ const fixes=[
     "f===\"live\"?\"NOAA 6-min aggregated\":\"Modeled from baseline + norms\"",
     "f===\"live\"?\"NOAA 6-min aggregated\":\"Historical observations unavailable\"",
     1
+  ],
+  [
+    "async function qh(e){var o,a;const t=`${XA}?product=water_level&date=latest&datum=IGLD&station=${e}&time_zone=lst&units=english&format=json`,r=await(await QA(fetch(t),6e3)).json(),i=parseFloat((a=(o=r.data)==null?void 0:o[0])==null?void 0:a.v);if(!isNaN(i)&&i>100)return{v:i,t:r.data[0].t};throw new Error(\"no data\")}",
+    "async function qh(e){const t=`${XA}?product=water_level&date=latest&datum=IGLD&station=${e}&time_zone=gmt&units=english&format=json`,res=await QA(fetch(t),6e3);if(!res.ok)throw new Error(\"NOAA HTTP \"+res.status);const r=await res.json(),row=r.data?.[0],i=typeof row?.v===\"string\"&&row.v.trim()?Number(row.v):NaN,stamp=typeof row?.t===\"string\"&&/^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}$/.test(row.t)?Date.parse(row.t.replace(\" \",\"T\")+\":00Z\"):NaN,age=Date.now()-stamp;if(r.metadata?.id===e&&Number.isFinite(i)&&i>100&&Number.isFinite(stamp)&&age>=0&&age<=43200000)return{v:i,t:new Date(stamp).toISOString()};throw new Error(\"No current verified NOAA observation\")}",
+    1
+  ],
+  [
+    "let pe=!1;R.forEach((ke,Le)=>{",
+    "const observed={};let pe=!1;R.forEach((ke,Le)=>{",
+    1
+  ],
+  [
+    "le[Y]=\"live\",pe=!0",
+    "le[Y]=\"live\",observed[Y]=ke.value[1].t,pe=!0",
+    1
+  ],
+  [
+    "b(new Date().toLocaleTimeString([],{hour:\"2-digit\",minute:\"2-digit\"})))})()},[])",
+    "b(observed))})()},[])",
+    1
+  ],
+  [
+    "g({id:P.id,v:Q.v}),v(\"live\"),b(new Date().toLocaleTimeString([],{hour:\"2-digit\",minute:\"2-digit\"}))",
+    "g({id:P.id,v:Q.v,t:Q.t}),v(\"live\")",
+    1
+  ],
+  [
+    "S.jsx(eq,{src:j}),y&&S.jsxs(\"span\",{style:{color:p.slate,fontWeight:500},children:[\"· \",y]})",
+    "S.jsx(eq,{src:j}),(hasLocal?m.t:y?.[i])&&S.jsxs(\"span\",{style:{color:p.slate,fontWeight:500},children:[\"Observed: \",hasLocal?m.t:y[i],\" UTC\"]})",
+    1
   ]
 ];
 let bundle=await readFile(old,"utf8");
