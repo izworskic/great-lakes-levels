@@ -17,17 +17,27 @@ const server=createServer(async(req,res)=>{
 });
 const live=process.argv.includes("--live");
 let browser;
-const obsTime=new Date(Date.now()-6*60000).toISOString().slice(0,16).replace("T"," ");
+const clock=Date.now();
+const offsets={"9099064":6,"9087044":12,"9075014":18,"9063085":24,"9052058":30,"9075035":36,"9075080":42,"9063090":48};
+const obsTime=id=>new Date(clock-(offsets[id]||54)*60000).toISOString().slice(0,16).replace("T"," ");
+const stampFor=id=>new Date(obsTime(id).replace(" ","T")+":00Z").toISOString();
 const valueById={"9099064":"601.22","9087044":"578.11","9075014":"578.11","9063085":"571.33","9052058":"244.55","9075035":"578.42","9075080":"579.24","9063090":"571.66"};
 const getBody=page=>page.locator("body").innerText();
 const waitText=async(page,text)=>page.waitForFunction(t=>document.body.innerText.includes(t),text,{timeout:15000});
 const select=page=>page.locator("select").filter({has:page.getByRole("option",{name:/^Main lake gauge/})});
-async function checkGauge(page,name,id,v){
+async function checkGauge(page,name,id,v,stamp){
  await waitText(page,`Gauge: ${name}`);
  await waitText(page,`(NOAA ${id})`);
  if(v!==undefined)await waitText(page,Number(v).toFixed(2));
+ if(stamp!==undefined)await waitText(page,stamp);
  const text=await getBody(page);
  assert.ok(text.includes(name)&&text.includes(id));
+ if(stamp!==undefined){
+  const gauge=page.locator("span").filter({hasText:new RegExp("^Gauge: "+name.replace(/[.*+?^${}()|[\]\\]/g,"\\ const text=await getBody(page);
+ assert.ok(text.includes(name)&&text.includes(id));"))}).filter({has:page.locator("span",{hasText:"(NOAA "+id+")"})});
+  const header=await gauge.locator("..").innerText();
+  assert.ok(header.includes("Observed: "+stamp),header);
+ }
  if(v!==undefined)assert.ok(text.includes(Number(v).toFixed(2)));
 }
 async function fixtures(base){
@@ -43,33 +53,33 @@ async function fixtures(base){
     const station=u.searchParams.get("station");
     if(u.searchParams.get("date")!=="latest")return route.fulfill({headers:{"Access-Control-Allow-Origin":"*"},json:{data:[]}});
     if(station===failedStation)return route.fulfill({status:503,headers:{"Access-Control-Allow-Origin":"*"},json:{error:{message:"fixture unavailable"}}});
-    return route.fulfill({headers:{"Access-Control-Allow-Origin":"*"},json:{metadata:{id:station},data:[{t:obsTime,v:valueById[station]||"578.00"}]}});
+    return route.fulfill({headers:{"Access-Control-Allow-Origin":"*"},json:{metadata:{id:station},data:[{t:obsTime(station),v:valueById[station]||"578.00"}]}});
    }
    return route.abort();
   });
   await page.goto(base+"/",{waitUntil:"domcontentloaded"});
   await page.getByRole("button",{name:"HUR",exact:true}).click();
   await select(page).selectOption("saginaw");
-  await checkGauge(page,"Essexville, MI","9075035","578.42");
+  await checkGauge(page,"Essexville, MI","9075035","578.42",stampFor("9075035"));
   await waitText(page,"Observed:");
   await select(page).selectOption("northmi");
-  await checkGauge(page,"Mackinaw City, MI","9075080","579.24");
+  await checkGauge(page,"Mackinaw City, MI","9075080","579.24",stampFor("9075080"));
   await select(page).selectOption("saginaw");
-  await checkGauge(page,"Essexville, MI","9075035","578.42");
+  await checkGauge(page,"Essexville, MI","9075035","578.42",stampFor("9075035"));
   failedStation="9075080";
   const failed=page.waitForResponse(r=>r.status()===503&&new URL(r.url()).searchParams.get("station")===failedStation);
   await select(page).selectOption("northmi");
   await failed;
   await waitText(page,"Selected local reading unavailable; showing lake-wide reference only.");
-  await checkGauge(page,"Harbor Beach, MI","9075014","578.11");
+  await checkGauge(page,"Harbor Beach, MI","9075014","578.11",stampFor("9075014"));
   assert.ok(!(await getBody(page)).includes("Gauge: Essexville"));
   await page.getByRole("button",{name:"ERI",exact:true}).click();
   const erie=select(page);
   await erie.selectOption("northshore");
-  await checkGauge(page,"Fermi Power Plant, MI (proxy)","9063090","571.66");
+  await checkGauge(page,"Fermi Power Plant, MI (proxy)","9063090","571.66",stampFor("9063090"));
   await waitText(page,"Regional proxy only; not a local shoreline measurement.");
   assert.deepEqual(errors,[]);
-  console.log(JSON.stringify({mode:"fixture",width,selection:"A-B-A",localFailure:"lake-wide fallback",proxy:"labeled",pageErrors:errors.length}));
+  console.log(JSON.stringify({mode:"fixture",width,selection:"A-B-A",stationTimestamps:"matched",localFailure:"lake-wide fallback",proxy:"labeled",pageErrors:errors.length}));
   await page.close();
  }
 }
@@ -91,8 +101,7 @@ async function production(){
  const stamp=new Date(row.t.replace(" ","T")+":00Z").toISOString();
  const age=Date.now()-Date.parse(stamp);
  assert.ok(age>=0&&age<=43200000);
- await checkGauge(page,"Essexville, MI","9075035",row.v);
- await waitText(page,stamp);
+ await checkGauge(page,"Essexville, MI","9075035",row.v,stamp);
  console.log(JSON.stringify({mode:"production",station:payload.metadata.id,observedAt:stamp,value:Number(row.v),displayMatched:true}));
  await page.close();
 }
