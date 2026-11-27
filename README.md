@@ -40,3 +40,7 @@ To do a quick HTML/copy edit:
 ## SOS attribution
 
 Footer attribution on every page: "Board member of Save Our Shoreline, Bay City, Michigan"
+
+## Temporary reviewed release overlay (2026-11-27)
+
+The owning React source is not present. The existing static build applies scripts/correct-levels-release.mjs to the staged public export only. This corrects the 14 misidentified station bindings, labels the Canadian north shore reading as a western Lake Erie proxy (not a Canadian gauge), fixes three explicit guide references, requires a current NOAA observation with matching metadata and UTC observation time, prevents cross-selection history and local readings from leaking, and removes invented daily historical values. A local gauge failure uses an explicitly labeled lake-wide reference. Cached and proxy data do not establish local conditions. The overlay checks exact anchors and 30 station identities, writes a content-hashed replacement asset and updates all staged HTML references. It fails closed on source drift. No new upstream request, dependency, runtime service, or schedule. Official station mapping: https://www.tidesandcurrents.noaa.gov/gldatums.html. Integrate these changes into the original React source before a new export, then retire the overlay in a reviewed PR. Browser and production acceptance still required.
