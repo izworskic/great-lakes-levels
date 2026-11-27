@@ -33,9 +33,8 @@ async function checkGauge(page,name,id,v,stamp){
  const text=await getBody(page);
  assert.ok(text.includes(name)&&text.includes(id));
  if(stamp!==undefined){
-  const gauge=page.locator("span").filter({hasText:new RegExp("^Gauge: "+name.replace(/[.*+?^${}()|[\]\\]/g,"\\ const text=await getBody(page);
- assert.ok(text.includes(name)&&text.includes(id));"))}).filter({has:page.locator("span",{hasText:"(NOAA "+id+")"})});
-  const header=await gauge.locator("..").innerText();
+  const station=page.locator("span").filter({hasText:new RegExp("^\\(NOAA "+id+"\\)$")});
+  const header=await station.locator("../..").innerText();
   assert.ok(header.includes("Observed: "+stamp),header);
  }
  if(v!==undefined)assert.ok(text.includes(Number(v).toFixed(2)));
