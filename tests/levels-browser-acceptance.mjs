@@ -21,7 +21,7 @@ const obsTime=new Date(Date.now()-6*60000).toISOString().slice(0,16).replace("T"
 const valueById={"9099064":"601.22","9087044":"578.11","9075014":"578.11","9063085":"571.33","9052058":"244.55","9075035":"578.42","9075080":"579.24","9063090":"571.66"};
 const getBody=page=>page.locator("body").innerText();
 const waitText=async(page,text)=>page.waitForFunction(t=>document.body.innerText.includes(t),text,{timeout:15000});
-const select=page=>page.locator("select").filter({has:page.locator('option[value="saginaw"]')});
+const select=page=>page.locator("select").filter({has:page.getByRole("option",{name:/^Main lake gauge/})});
 async function checkGauge(page,name,id,v){
  await waitText(page,`Gauge: ${name}`);
  await waitText(page,`(NOAA ${id})`);
@@ -64,7 +64,7 @@ async function fixtures(base){
   await checkGauge(page,"Harbor Beach, MI","9075014","578.11");
   assert.ok(!(await getBody(page)).includes("Gauge: Essexville"));
   await page.getByRole("button",{name:"ERI",exact:true}).click();
-  const erie=page.locator("select").filter({has:page.locator('option[value="northshore"]')});
+  const erie=select(page);
   await erie.selectOption("northshore");
   await checkGauge(page,"Fermi Power Plant, MI (proxy)","9063090","571.66");
   await waitText(page,"Regional proxy only; not a local shoreline measurement.");
