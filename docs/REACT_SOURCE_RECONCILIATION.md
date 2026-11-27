@@ -1,0 +1,7 @@
+# Original React source reconciliation
+
+Status: BLOCKED_SOURCE_UNAVAILABLE. The artifact repository README identifies a separate local React/Vite source (~1,836-line App.jsx); the artifact bundle and build overlay are not its source. Do not represent reconstructed minified code as the original, or remove the overlay until the owning source is recovered.
+
+Port the reviewed behavior from scripts/correct-levels-release.mjs to the owning repository: all 30 station identities and 14 corrected bindings; explicit named proxies; selected station identity validation; finite IGLD feet, GMT timestamp and 12-hour freshness; selection-keyed reading and history state with request cancellation; no synthetic daily observations; labeled lake-wide fallback and observation timestamp. Correct the three affected static guide station references. Preserve creator identity, canonical routes, ads, and all existing dashboard features.
+
+Recovery gate: compare the owning React source and new export with the current deployed artifact; run the station and observation unit suite, browser A-B-A and provider-failure replay on desktop and mobile, and a fresh production NOAA observation/display reconciliation. Verify all 57 static routes and no references to a superseded bundle. Only then remove the release overlay via reviewed PR. Until source is available, keep the exact-anchor and content-hash build guard; do not claim source reconciliation.

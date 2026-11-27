@@ -6,7 +6,8 @@ permissions:
   contents: read
 jobs:
   acceptance:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -15,3 +16,9 @@ jobs:
       - name: Run actual configured static build
         run: node -e 'require("node:child_process").execSync(require("./vercel.json").buildCommand,{stdio:"inherit"})'
       - run: node --test tests/levels-release.test.mjs
+      - name: Install pinned QA-only browser tooling
+        run: npm install --no-save --no-package-lock --ignore-scripts playwright@1.56.1 && npx playwright install --with-deps chromium
+      - name: Regional selection and failure replays (built artifact)
+        run: node tests/levels-browser-acceptance.mjs
+      - name: Production NOAA observation and display reconciliation
+        run: node tests/levels-browser-acceptance.mjs --live
