@@ -41,9 +41,9 @@ async function fixtures(base){
    if(u.origin===base)return route.continue();
    if(u.hostname==="api.tidesandcurrents.noaa.gov"){
     const station=u.searchParams.get("station");
-    if(u.searchParams.get("date")!=="latest")return route.fulfill({json:{data:[]}});
-    if(station===failedStation)return route.fulfill({status:503,json:{error:{message:"fixture unavailable"}}});
-    return route.fulfill({json:{metadata:{id:station},data:[{t:obsTime,v:valueById[station]||"578.00"}]}});
+    if(u.searchParams.get("date")!=="latest")return route.fulfill({headers:{"Access-Control-Allow-Origin":"*"},json:{data:[]}});
+    if(station===failedStation)return route.fulfill({status:503,headers:{"Access-Control-Allow-Origin":"*"},json:{error:{message:"fixture unavailable"}}});
+    return route.fulfill({headers:{"Access-Control-Allow-Origin":"*"},json:{metadata:{id:station},data:[{t:obsTime,v:valueById[station]||"578.00"}]}});
    }
    return route.abort();
   });
@@ -57,7 +57,9 @@ async function fixtures(base){
   await select(page).selectOption("saginaw");
   await checkGauge(page,"Essexville, MI","9075035","578.42");
   failedStation="9075080";
+  const failed=page.waitForResponse(r=>r.status()===503&&new URL(r.url()).searchParams.get("station")===failedStation);
   await select(page).selectOption("northmi");
+  await failed;
   await waitText(page,"Selected local reading unavailable; showing lake-wide reference only.");
   await checkGauge(page,"Harbor Beach, MI","9075014","578.11");
   assert.ok(!(await getBody(page)).includes("Gauge: Essexville"));
