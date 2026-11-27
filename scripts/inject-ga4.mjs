@@ -14,7 +14,7 @@ const TAG = `<!-- Google tag (gtag.js) -->
   gtag('js', new Date());
   gtag('config', '${MEASUREMENT_ID}');
 </script>`;
-const SKIP_TOP_LEVEL = new Set(['.git', '.vercel', 'node_modules', 'public', 'scripts', 'vercel.json']);
+const SKIP_TOP_LEVEL = new Set(['.git', '.vercel', 'node_modules', 'public', 'scripts', 'tests', '.github', 'vercel.json']);
 
 let scanned = 0;
 let injected = 0;
